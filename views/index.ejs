@@ -1,0 +1,31 @@
+<%- include("partials/header") %>
+    <div class="table-container">
+      <h2 class="todo-title">Workflow Elite</h2>
+      <div>
+        <a class="btn" href="/add">Add todo</a>
+      </div>
+      <br />
+
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Created at</th>
+          <th>Updated at</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <% for(let i =0; i < todos.length; i++) { %>
+            <td><%= todos[i].title %></td>
+            <td><%= todos[i].desc %></td>
+            <td><%= moment(todos[i].createdAt).format("MMM DD, YYYY, HH:mm:ss")  %></td>
+            <td><%= moment(todos[i].updatedAt).format("MMM DD, YYYY, HH:mm:ss") %></td>
+            <td>
+              <a class="btn" href="/update?id=<%= todos[i]._id %>">Edit</a>
+              <a class="btn" href="/delete?id=<%= todos[i]._id %>">Delete</a>
+            </td>
+        </tr>
+          <% } %>    
+      </table>
+    </div>
+<%- include("partials/footer") %>
